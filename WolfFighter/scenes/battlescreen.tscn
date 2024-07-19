@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://bq8kckawajq02"]
+
+[ext_resource type="Script" path="res://scripts/runbutton.gd" id="1_ciu1d"]
+[ext_resource type="Script" path="res://scenes/battlescreen.gd" id="1_jjqkr"]
+[ext_resource type="Texture2D" uid="uid://s2wpfmng605j" path="res://sprites/wolf_1.png" id="2_fqt8t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtrs7"]
+atlas = ExtResource("2_fqt8t")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s42mi"]
+atlas = ExtResource("2_fqt8t")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7fnu"]
+atlas = ExtResource("2_fqt8t")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2daxm"]
+atlas = ExtResource("2_fqt8t")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2podo"]
+atlas = ExtResource("2_fqt8t")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rg730"]
+atlas = ExtResource("2_fqt8t")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_noil0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtrs7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s42mi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7fnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2daxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2podo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rg730")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_jjqkr")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -215.0
+offset_top = 55.0
+offset_right = -93.0
+offset_bottom = 138.0
+text = "Run"
+script = ExtResource("1_ciu1d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_noil0")
+frame = 3
+frame_progress = 0.421108
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
