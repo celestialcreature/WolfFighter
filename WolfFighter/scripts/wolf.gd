@@ -64,15 +64,16 @@ func check_damage():
 #	print("cooldown: ", player_cooldown)
 #	print()
 #						
-	if playerAttackRange and global.playerIsAttacking == true && player_cooldown == true:
+	if playerAttackRange and global.playerIsAttacking == true:
 		health -= 20
 		$Health_Bar.value -= 20
 		print("Wolf Health = ", health)
+		global.playerIsAttacking = false
 		if health <= 0:
 			self.queue_free()
 			print("Wolf Dead")
 			pass
-		player_cooldown == false
+		await get_tree().create_timer(1.0).timeout 
 
 
 func _on_hurt_range_body_entered(body):

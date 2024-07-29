@@ -22,6 +22,7 @@ layer_0/tile_data = PackedInt32Array(589840, 3080192, 33, 655376, 3080192, 34, 5
 position = Vector2(-149, -2)
 
 [node name="projectile" type="Sprite2D" parent="." groups=["attack"]]
+visible = false
 position = Vector2(-58, 0)
 texture = ExtResource("4_7w81q")
 script = ExtResource("5_rhgot")

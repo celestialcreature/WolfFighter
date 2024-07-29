@@ -343,19 +343,19 @@ wait_time = 0.5
 [node name="Stamina_Bar" type="TextureProgressBar" parent="."]
 modulate = Color(1, 0.886275, 0.788235, 0.733333)
 offset_left = -50.0
-offset_top = -44.0
+offset_top = -25.0
 offset_right = 50.0
-offset_bottom = -12.0
+offset_bottom = -15.0
 step = 0.001
 value = 100.0
 texture_progress = ExtResource("4_7wngo")
 
 [node name="Health_Bar" type="TextureProgressBar" parent="."]
-modulate = Color(0.862745, 0.176471, 0.270588, 0.733333)
+modulate = Color(0.403922, 0.560784, 1, 0.733333)
 offset_left = -50.0
-offset_top = -82.0
+offset_top = -36.0
 offset_right = 50.0
-offset_bottom = -50.0
+offset_bottom = -26.0
 value = 100.0
 texture_progress = ExtResource("4_7wngo")
 
@@ -367,13 +367,13 @@ collision_mask = 7
 script = ExtResource("6_p3lbb")
 
 [node name="cut_collision_box" type="CollisionShape2D" parent="meele_attack_area"]
-position = Vector2(0, 40)
+position = Vector2(1, 30)
 shape = SubResource("RectangleShape2D_yfm7a")
 disabled = true
 script = ExtResource("7_31ur4")
 
 [node name="Cut_animation" type="AnimatedSprite2D" parent="meele_attack_area"]
-position = Vector2(0, 40)
+position = Vector2(1, 30)
 sprite_frames = SubResource("SpriteFrames_m5hjw")
 animation = &"new_animation"
 
@@ -381,3 +381,4 @@ animation = &"new_animation"
 [connection signal="body_exited" from="PlayerHitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="enemyAttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="player_Attack_Cooldown" to="." method="_on_player_attack_cooldown_timeout"]
+[connection signal="body_entered" from="meele_attack_area" to="." method="_on_meele_attack_area_body_entered"]

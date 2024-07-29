@@ -56,14 +56,14 @@ func move_player():
 				cur_stamina += 0.001
 				stamina_bar.value += 0.001
 				
-		if Input.is_action_pressed("attack_1"):
+#		if Input.is_action_pressed("attack_1"):
 #			$meele_attack_area/cut_collision_box.disabled = false
 #			$meele_attack_area/Cut_animation.visible = true
-			player_attack()
-		if Input.is_action_just_released("attack_1"):
+#			player_attack()
+#		if Input.is_action_just_released("attack_1"):
 #			$meele_attack_area/cut_collision_box.disabled = true
 #			$meele_attack_area/Cut_animation.visible = false
-			player_attack_reset()
+#			player_attack_reset()
 			pass
 
 func _physics_process(delta):
@@ -98,26 +98,26 @@ func enemy_attack():
 		$enemyAttackCooldown.start()
 		print("Player: " + str(health))
 
-func _on_attack_cooldown_timeout():
-	enemyCooldown = true
+#func _on_attack_cooldown_timeout():
+#	enemyCooldown = true
 
-func player_attack():
-	$meele_attack_area/cut_collision_box.disabled = false
-	$meele_attack_area/Cut_animation.visible = true
-	global.playerIsAttacking = true
+#func player_attack():
+#	$meele_attack_area/cut_collision_box.disabled = false
+#	$meele_attack_area/Cut_animation.visible = true
+#	global.playerIsAttacking = true
 #	for i in 4:
 #		$meele_attack_area.position = Vector2i(i,0)
 #	$meele_attack_area/cut_collision_box.disabled = true
 #	$meele_attack_area/Cut_animation.visible = false
 #	$meele_attack_area.position = Vector2i(0,0)
-	pass
+#	pass
 	
-func player_attack_reset():
-	$meele_attack_area/cut_collision_box.disabled = true
-	$meele_attack_area/Cut_animation.visible = false
-	$meele_attack_area.position = Vector2i(0,0)
-	global.playerIsAttacking = false
-	pass
+#func player_attack_reset():
+#	$meele_attack_area/cut_collision_box.disabled = true
+#	$meele_attack_area/Cut_animation.visible = false
+#	$meele_attack_area.position = Vector2i(0,0)
+#	global.playerIsAttacking = false
+#	pass
 
 #func _on_player_attack_cooldown_timeout():
 #	pass # Replace with function body.
@@ -127,3 +127,10 @@ func player_attack_reset():
 ##	if area.is_in_group("hurtbox")
 ##		area.takeDamage()
 #	pass # Replace with function body.
+
+
+
+
+func _on_meele_attack_area_body_entered(body):
+	print("wolf is hit")
+	global.playerIsAttacking = true

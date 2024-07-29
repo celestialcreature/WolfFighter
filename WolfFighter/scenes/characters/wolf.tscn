@@ -260,11 +260,11 @@ shape = SubResource("CircleShape2D_sg3dv")
 wait_time = 0.5
 
 [node name="Health_Bar" type="TextureProgressBar" parent="."]
-modulate = Color(0.862745, 0.176471, 0.270588, 0.733333)
+modulate = Color(0.403922, 0.560784, 1, 0.733333)
 offset_left = -50.0
-offset_top = -36.0
+offset_top = -18.0
 offset_right = 50.0
-offset_bottom = -4.0
+offset_bottom = -8.0
 value = 100.0
 texture_progress = ExtResource("3_ctrur")
 
@@ -276,6 +276,6 @@ texture_progress = ExtResource("3_ctrur")
 [connection signal="body_exited" from="hit_range" to="." method="_on_hit_range_body_exited"]
 [connection signal="body_entered" from="hurt_range" to="." method="_on_hit_range_body_entered"]
 [connection signal="body_entered" from="hurt_range" to="." method="_on_hurt_range_body_entered"]
-[connection signal="body_exited" from="hurt_range" to="." method="_on_hit_range_body_exited"]
 [connection signal="body_exited" from="hurt_range" to="." method="_on_hurt_range_body_exited"]
+[connection signal="body_exited" from="hurt_range" to="." method="_on_hit_range_body_exited"]
 [connection signal="timeout" from="playerAttackCooldown" to="." method="_on_player_attack_cooldown_timeout"]
