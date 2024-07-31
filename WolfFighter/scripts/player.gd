@@ -134,3 +134,5 @@ func enemy_attack():
 func _on_meele_attack_area_body_entered(body):
 	print("wolf is hit")
 	global.playerIsAttacking = true
+	if body.has_method("enemy"):
+		body.playerAttackRange = true

@@ -276,6 +276,6 @@ texture_progress = ExtResource("3_ctrur")
 [connection signal="body_exited" from="hit_range" to="." method="_on_hit_range_body_exited"]
 [connection signal="body_entered" from="hurt_range" to="." method="_on_hit_range_body_entered"]
 [connection signal="body_entered" from="hurt_range" to="." method="_on_hurt_range_body_entered"]
-[connection signal="body_exited" from="hurt_range" to="." method="_on_hurt_range_body_exited"]
 [connection signal="body_exited" from="hurt_range" to="." method="_on_hit_range_body_exited"]
+[connection signal="body_exited" from="hurt_range" to="." method="_on_hurt_range_body_exited"]
 [connection signal="timeout" from="playerAttackCooldown" to="." method="_on_player_attack_cooldown_timeout"]
