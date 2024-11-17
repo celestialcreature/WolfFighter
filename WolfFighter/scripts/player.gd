@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var SPEED = 200
+@export var DASH_SPEED = 500
 @export var health = 100
 @export var type = "Human"
 @export var MAX_STAMINA: float = 10
@@ -17,10 +18,10 @@ var playerAlive = true
 func _ready():
 	$AnimatedSprite2D.play("frontidle")
 
-func move_player():
+func move_player(delta):
 	if playerAlive == true:
 		var input_direction = Input.get_vector("left", "right", "up", "down")
-		velocity = input_direction * SPEED
+		
 		if Input.is_action_pressed("right"):
 			$AnimatedSprite2D.play("rightwalk")
 			$meele_attack_area.rotation_degrees = -90
@@ -45,16 +46,15 @@ func move_player():
 		if Input.is_action_just_released("up"):
 			$AnimatedSprite2D.play("upidle")
 			
-		if Input.is_action_pressed("special"): 
-			if cur_stamina > 0:
-				cur_stamina -= 1
-				#TextureProgressBar
-				stamina_bar.value -= 1
-				velocity *= 3
-		if !Input.is_action_pressed("special"):
-			while cur_stamina < MAX_STAMINA:
-				cur_stamina += 0.001
-				stamina_bar.value += 0.001
+		if Input.is_action_pressed("special") and cur_stamina > 0:
+			cur_stamina -= 20 * delta
+			stamina_bar.value = cur_stamina
+			velocity = input_direction * DASH_SPEED
+		else:
+			if cur_stamina < MAX_STAMINA:
+				cur_stamina += 20 * delta
+				stamina_bar.value = cur_stamina
+			velocity = input_direction * SPEED
 				
 #		if Input.is_action_pressed("attack_1"):
 #			$meele_attack_area/cut_collision_box.disabled = false
@@ -67,17 +67,21 @@ func move_player():
 			pass
 
 func _physics_process(delta):
-	move_player()
+	move_player(delta)
 	#print("Player: " + str(health))
 	enemy_attack()
 	move_and_slide()
 	
 	if health <= 0 && playerAlive == true:
-		playerAlive = false
-		health = 0
-		$AnimatedSprite2D.play("Dead")
-		print("Player: dead")
-		#add game over here
+		death()
+
+func death():
+	playerAlive = false
+	health = 0
+	velocity = Vector2.ZERO
+	$AnimatedSprite2D.play("Dead")
+	print("Player: dead")
+	#add game over here
 
 func player():
 	pass
@@ -98,8 +102,8 @@ func enemy_attack():
 		$enemyAttackCooldown.start()
 		print("Player: " + str(health))
 
-#func _on_attack_cooldown_timeout():
-#	enemyCooldown = true
+func _on_attack_cooldown_timeout():
+	enemyCooldown = true
 
 #func player_attack():
 #	$meele_attack_area/cut_collision_box.disabled = false

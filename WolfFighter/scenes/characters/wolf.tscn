@@ -218,7 +218,8 @@ script = ExtResource("1_cdb68")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6sech")
-animation = &"run"
+animation = &"bark"
+frame_progress = 0.0486065
 
 [node name="box" type="CollisionShape2D" parent="."]
 visible = false

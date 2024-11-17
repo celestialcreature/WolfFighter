@@ -346,8 +346,9 @@ offset_left = -50.0
 offset_top = -25.0
 offset_right = 50.0
 offset_bottom = -15.0
+max_value = 10.0
 step = 0.001
-value = 100.0
+value = 10.0
 texture_progress = ExtResource("4_7wngo")
 
 [node name="Health_Bar" type="TextureProgressBar" parent="."]
